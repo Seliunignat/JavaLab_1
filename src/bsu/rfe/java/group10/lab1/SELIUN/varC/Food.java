@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Food implements Consumable {
 
-    String name = null;
+    private String name = null;
 
     public Food(String name)
     {
