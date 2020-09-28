@@ -21,12 +21,12 @@ public class Apple extends Food{
 
     @Override
     public String toString() {
-        return super.toString() + " размера '" + size.toUpperCase() + "' ";
+        return super.toString() + " размера '" + size.toUpperCase() + "'";
     }
 
     @Override
     public void consume() {
-        System.out.println(this + "съедено"); //Здесь при выводе this, вызывается автоматически метод toString(), который преобразует данный объект в строку(а именно в ИМЯ)
+        System.out.println(this + " съедено"); //Здесь при выводе this, вызывается автоматически метод toString(), который преобразует данный объект в строку(а именно в ИМЯ)
     }
 
     @Override

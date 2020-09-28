@@ -14,7 +14,7 @@ public class Cheese extends Food {
 
     @Override
     public void consume() {
-        System.out.println(this + "съеден"); //Здесь при выводе this, вызывается автоматически метод toString(), который преобразует данный объект в строку(а именно в ИМЯ)
+        System.out.println(this + " съеден"); //Здесь при выводе this, вызывается автоматически метод toString(), который преобразует данный объект в строку(а именно в ИМЯ)
     }
 
     @Override

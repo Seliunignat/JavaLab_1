@@ -7,21 +7,34 @@ public class Main {
 	// write your code here
         Food[] breakfast = new Food[20];
 
-        int itemSoFar = 0;
         String arg = "";
         for(int i = 0; i < args.length; i++)
         {
             arg = args[i];
-            String parts[] = arg.split("/");
-            if(parts[0].equals("Cheese"))
+            String parts[] = arg.split("/"); //Разбиваем на компоненты
+
+            try
             {
-                breakfast[itemSoFar] = new Cheese(); //У сыра нет дополнительных аргументов
+                Class myClass = Class.forName("bsu.rfe.java.group10.lab1.SELIUN.varC." + parts[0]);     //Из библиотеки reflect, мы создаем объект типа Class, имя которого мы ищем в нашем пакете
+                if(parts.length == 1) //Если дополнительных параметров нет
+                {
+                    Constructor constructor = myClass.getConstructor();         //Из библиотеки reflect
+                    breakfast[i] = (Food)constructor.newInstance();
+                }
+                else if(parts.length == 2) //Есть дополнительный параметр в parts[1]
+                {
+                    Constructor constructor = myClass.getConstructor(String.class);         //Создаем конструктор, в который потом отправлять будем один аргумент
+                    breakfast[i] = (Food)constructor.newInstance(parts[1]);         //Создаем объект типа Food, преобразованный от типа Constructor(с аругментом из parts[1])
+                }
             }
-            else if(parts[0].equals("Apple"))
+            catch (ClassNotFoundException e)
             {
-                breakfast[itemSoFar] = new Apple(parts[1]); //У яблока один дополнительный аргумент
-            }//Добавить анализ других продуктов для завтрака
-            itemSoFar++;
+                continue;
+            }
+            catch (NoSuchMethodException e)
+            {
+                System.out.println("ОШИБКА: Не найден нужный метод!");
+            }
         }
 
         for(Food item: breakfast) //Создали цикл который создает ссылку типа Food, которая ходит по всему массиву breakfast[20]
