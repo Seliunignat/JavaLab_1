@@ -1,5 +1,7 @@
 package bsu.rfe.java.group10.lab1.SELIUN.varC;
 import java.lang.reflect.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
 
@@ -8,7 +10,7 @@ public class Main {
         Food[] breakfast = new Food[20];
 
         String arg = "";
-        for(int i = 0; i < args.length; i++)
+        for(int i = 0; i < args.length; i++) //Цикл на определения входных аргументов(и их дополнительных); Создание объектов классов с именем аргументов
         {
             arg = args[i];
             String parts[] = arg.split("/"); //Разбиваем на компоненты
@@ -36,6 +38,15 @@ public class Main {
                 System.out.println("ОШИБКА: Не найден нужный метод!");
             }
         }
+
+        Arrays.sort(breakfast, new Comparator() {           //Используем Arrays(библиотеку), используем Comparator(библиотеку). Для сортировки массива breakfast типа Food
+            public int compare(Object f1, Object f2)        //Реализуем анонимный класс(Переопределяем метод compare, сранивающий имена объектов Food, прямо здесь в коде)
+            {
+                if(f1 == null) return 1;
+                if(f2 == null) return -1;
+                return (((Food)f1).getName().compareTo(((Food)f2).getName())); //Конкретное сравнение имен с помощью compareTo()
+            }
+        });
 
         for(Food item: breakfast) //Создали цикл который создает ссылку типа Food, которая ходит по всему массиву breakfast[20]
         {
