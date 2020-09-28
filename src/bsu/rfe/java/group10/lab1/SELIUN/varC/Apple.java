@@ -21,7 +21,7 @@ public class Apple extends Food{
 
     @Override
     public String toString() {
-        return super.toString() + "размера '" + size.toUpperCase() + "'";
+        return super.toString() + " размера '" + size.toUpperCase() + "' ";
     }
 
     @Override
