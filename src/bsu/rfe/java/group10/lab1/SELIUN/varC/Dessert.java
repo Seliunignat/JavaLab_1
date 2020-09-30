@@ -2,7 +2,10 @@ package bsu.rfe.java.group10.lab1.SELIUN.varC;
 
 public class Dessert extends Food{
     private String component1, component2;
-
+    private static String[] component1_LIST = {"ТВОРОГ", "МОРОЖЕНОЕ", "БАНАН"};
+    private static int[] CALORIES_comp1_list = { 178, 207, 89}; //100 грамм
+    private static String[] component2_LIST = {"ШОКОЛАД", "КАРАМЕЛЬ", "ДЖЕМ"};
+    private static int[] CALORIES_comp2_list = { 164, 115, 83}; //30 грамм добавки
 
     public Dessert(String component1, String component2) {
         super("Десерт");
@@ -42,5 +45,6 @@ public class Dessert extends Food{
         }
         else return false;
     }
+
 
 }

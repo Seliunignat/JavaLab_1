@@ -1,6 +1,7 @@
 package bsu.rfe.java.group10.lab1.SELIUN.varC;
 
 public class Cheese extends Food {
+    private static int CALORIES = 50;
 
     public Cheese()
     {

@@ -4,7 +4,9 @@ import java.util.Objects;
 
 public class Apple extends Food{
     private String size;
-
+    private static int CALORIES_SMALL = 44;
+    private static int CALORIES_MEDIUM = 48;
+    private static int CALORIES_BIG = 52;
 
     public Apple(String size) {
         super("Яблоко");
@@ -37,5 +39,17 @@ public class Apple extends Food{
             return size.equals(((Apple) obj).size);
         }
         else return false;
+    }
+
+    @Override
+    public int calculateCalories() {
+        switch (this.size.toUpperCase())
+        {
+            case "МАЛОЕ": return CALORIES_SMALL;
+            case "СРЕДНЕЕ": return CALORIES_MEDIUM;
+            case "БОЛЬШОЕ": return CALORIES_BIG;
+            default: return 0;
+        }
+
     }
 }

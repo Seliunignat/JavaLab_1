@@ -2,7 +2,7 @@ package bsu.rfe.java.group10.lab1.SELIUN.varC;
 
 import java.util.Objects;
 
-public class Food implements Consumable {
+public class Food implements Consumable, Nutritious {
 
     private String name = null;
 
@@ -33,5 +33,10 @@ public class Food implements Consumable {
     @Override
     public void consume()
     {
+    }
+
+    @Override
+    public int calculateCalories() {
+        return 0;
     }
 }
