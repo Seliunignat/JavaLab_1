@@ -3,12 +3,13 @@ package bsu.rfe.java.group10.lab1.SELIUN.varC;
 import java.util.Objects;
 
 public class Food implements Consumable, Nutritious {
-
+    protected int amountOfParams;
     private String name = null;
 
     public Food(String name)
     {
         this.name = name;
+        amountOfParams = 0;
     }
 
     public String getName() {
@@ -21,6 +22,14 @@ public class Food implements Consumable, Nutritious {
     @Override
     public String toString() {
         return name;
+    }
+
+    public int getAmountOfParams() {
+        return amountOfParams;
+    }
+
+    public void setAmountOfParams(int amountOfParams) {
+        this.amountOfParams = amountOfParams;
     }
 
     @Override

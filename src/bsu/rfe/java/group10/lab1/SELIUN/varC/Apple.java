@@ -11,6 +11,7 @@ public class Apple extends Food{
     public Apple(String size) {
         super("Яблоко");
         this.size = size;
+        super.setAmountOfParams(1);
     }
 
     public String getSize() {

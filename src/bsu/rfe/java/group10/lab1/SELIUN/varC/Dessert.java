@@ -11,6 +11,7 @@ public class Dessert extends Food{
         super("Десерт");
         this.component1 = component1;
         this.component2 = component2;
+        super.setAmountOfParams(2);
     }
 
     public String getComponent1() {
@@ -46,5 +47,25 @@ public class Dessert extends Food{
         else return false;
     }
 
-
+    @Override
+    public int calculateCalories() {
+        int ourCalories = 0;
+        for(int i = 0; i < 3; i++)
+        {
+            if(component1.toUpperCase().equals(component1_LIST[i]))
+            {
+               ourCalories += CALORIES_comp1_list[i];
+               break;
+            }
+        }
+        for(int i = 0; i < 3; i++)
+        {
+            if(component1.toUpperCase().equals(component2_LIST[i]))
+            {
+                ourCalories += CALORIES_comp2_list[i];
+                break;
+            }
+        }
+        return ourCalories;
+    }
 }

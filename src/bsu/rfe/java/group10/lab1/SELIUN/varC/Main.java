@@ -45,9 +45,15 @@ public class Main {
                     Constructor constructor = myClass.getConstructor(String.class);         //Создаем конструктор, в который потом отправлять будем один аргумент
                     breakfast[i] = (Food)constructor.newInstance(parts[1]);         //Создаем объект типа Food, преобразованный от типа Constructor(с аругментом из parts[1])
                 }
+                else if(parts.length == 3)
+                {
+                    Constructor constructor = myClass.getConstructor(String.class, String.class);         //Создаем конструктор, в который потом отправлять будем один аргумент
+                    breakfast[i] = (Food)constructor.newInstance(parts[1], parts[2]);         //Создаем объект типа Food, преобразованный от типа Constructor(с аругментом из parts[1])
+                }
             }
             catch (ClassNotFoundException e)
             {
+                System.out.println("Продукт не может быть включен в завтрак(");
                 continue;
             }
             catch (NoSuchMethodException e)
@@ -57,16 +63,26 @@ public class Main {
         }
 
 
-        if(sort == true) //Если присутствует параметр -sort
+        if(sort == true) //Если присутствует параметр -sort //Сортируем(как сказано в задании) по убыванию количества параметров
         {
             Arrays.sort(breakfast, new Comparator() {           //Используем Arrays(библиотеку), используем Comparator(библиотеку). Для сортировки массива breakfast типа Food
                 public int compare(Object f1, Object f2)        //Реализуем анонимный класс(Переопределяем метод compare, сранивающий имена объектов Food, прямо здесь в коде)
                 {
                     if (f1 == null) return 1;
                     if (f2 == null) return -1;
-                    return (((Food) f1).getName().compareTo(((Food) f2).getName())); //Конкретное сравнение имен с помощью compareTo()
+
+                    if (((Food)f1).getAmountOfParams() > ((Food)f2).getAmountOfParams()) return -1; //Сравниваем количество параметров
+                    else if(((Food)f1).getAmountOfParams() < ((Food)f2).getAmountOfParams()) return 1;
+                    else return 0;
                 }
             });
+        }
+
+        if(calories == true) //Если присутствует параметр -calories
+        {
+            System.out.println("---------------------------------------------------");
+            System.out.println("Калорийность завтрака: " + Calories(breakfast) + " калорий.");
+            System.out.println("---------------------------------------------------");
         }
 
         String[] FoodInBreakfastWithoutPovtoreniy = new String[20];                                //Здесь мы выделяем память под массивы для подсчета еды
@@ -140,5 +156,17 @@ public class Main {
             }
             else break;
         }
+    }
+
+    public static int Calories(Food[] breakfast)
+    {
+        int Calories = 0;
+        for(Food item: breakfast)
+        {
+            if(item!=null)
+                Calories += item.calculateCalories();
+            else break;
+        }
+        return Calories;
     }
 }

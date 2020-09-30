@@ -27,4 +27,9 @@ public class Cheese extends Food {
         }
         else return false;
     }
+
+    @Override
+    public int calculateCalories() {
+        return CALORIES;
+    }
 }
