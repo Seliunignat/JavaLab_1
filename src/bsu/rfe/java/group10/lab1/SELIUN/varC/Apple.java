@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Apple extends Food{
     private String size;
-    private static int CALORIES_SMALL = 44;
-    private static int CALORIES_MEDIUM = 48;
-    private static int CALORIES_BIG = 52;
+    private static final int CALORIES_SMALL = 44;
+    private static final int CALORIES_MEDIUM = 48;
+    private static final int CALORIES_BIG = 52;
 
     public Apple(String size) {
         super("Яблоко");
